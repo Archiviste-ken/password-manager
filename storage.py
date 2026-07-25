@@ -42,3 +42,20 @@ def view_websites():
 
     print(f"Total Websites: {len(passwords)}")
     
+    
+def search_password(website):
+
+    passwords = load_passwords()
+
+    for password in passwords:
+
+        if password["website"].lower() == website.lower():
+
+            print("\n========== Password Found ==========\n")
+            print(f"Website : {password['website']}")
+            print(f"Username: {password['username']}")
+            print(f"Password: {password['password']}")
+
+            return
+
+    print("Password Not Found.")
