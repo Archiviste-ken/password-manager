@@ -59,3 +59,17 @@ def search_password(website):
             return
 
     print("Password Not Found.")
+    
+    
+def delete_password(index):
+    passwords = load_passwords()
+    
+    if not passwords:
+        print("No passwords found")
+        return
+    
+    deleted_password = passwords.pop(index - 1)
+    
+    save_passwords(passwords)
+    
+    print(f"{deleted_password['website']} Deleted Successfully ✅")
