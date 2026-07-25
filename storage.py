@@ -26,11 +26,19 @@ def add_passwords(website, username, password):
     
     save_passwords(passwords)
     
-    
-        
-        
-    
-    
-    
+def view_websites():
 
+    passwords = load_passwords()
+
+    if not passwords:
+        print("No websites listed!!!")
+        return
+
+    print("========== Saved Websites ==========")
+
+    for index, password in enumerate(passwords, start=1):
+        print(f"{index}. {password['website']}")
+        print("-" * 25)
+
+    print(f"Total Websites: {len(passwords)}")
     
