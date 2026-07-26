@@ -46,25 +46,30 @@ while True:
     
     if choice == "1":
         
-        website = input("Website: ")
-        username = input("Username: ")
-        generate = input("Generate Password Automatically? (Y/N): ").strip().upper()
-        if generate == "Y":
-            length = int(input("Password Length: "))
-            password = generate_password(length)
-            print(f"\nGenerated Password: {password}")
-        
-        
-        elif generate == "N":
-            password = input("Enter Password: ")
+        try:
+            website = input("Website: ")
+            username = input("Username: ")
+            generate = input("Generate Password Automatically? (Y/N): ").strip().upper()
+            if generate == "Y":
+                length = int(input("Password Length: "))
+                password = generate_password(length)
+                print(f"\nGenerated Password: {password}")
+                    
+                    
+            elif generate == "N":
+                password = input("Enter Password: ")
+                        
+            else:
+                print("Invalid choice.")
+                continue
+                    
+            add_passwords(website, username, password)
+                    
+            print("Password Saved Successfully ✅")
             
-        else:
-            print("Invalid choice.")
-        continue
+        except ValueError:
+            print("Please enter valid input")
         
-        add_passwords(website, username, password)
-        
-        print("Password Saved Successfully ✅")
         
     elif choice == "2":
         view_websites()
@@ -74,15 +79,24 @@ while True:
         search_password(website)
         
     elif choice == "4":
-        view_websites()
-        index = int(input("Enter website number to delete:"))
-        delete_password(index)
+        try:
+            view_websites()
+            index = int(input("Enter website number to delete:"))
+            delete_password(index)
+            
+        except ValueError:
+            print("Please enter valid input")
+            
     
     elif choice == "5":
-        length = int(input("Enter Password Length: "))
-        password = generate_password(length)
-        print("\n========== Generated Password ==========")
-        print(password)
+        try: 
+            length = int(input("Enter Password Length: "))
+            password = generate_password(length)
+            print("\n========== Generated Password ==========")
+            print(password)
+            
+        except ValueError:
+            print("Please enter valid input")
         
     elif choice == "6":
         print("Sayonara!!!")
